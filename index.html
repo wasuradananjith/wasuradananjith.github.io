@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wasura Wattearachchi | Portfolio</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Tailwind Configuration for Custom Colors (Modern Orange Theme)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',   // Very light orange background
+                            100: '#ffedd5',  // Light orange hover
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            500: '#e36414',  // Modern sleek burnt orange/terracotta
+                            600: '#c24b0a',  // Darker shade for text/hover
+                            900: '#7c2d12',  // Deep contrast shade
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for active nav links and animations */
+        .nav-link.active {
+            color: #e36414; /* brand-500 */
+            font-weight: 600;
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #e36414;
+            transition: width .3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Pure CSS Image Slider Keyframes */
+        @keyframes fade1 {
+            0%, 45%, 100% { opacity: 1; }
+            50%, 95% { opacity: 0; }
+        }
+        @keyframes fade2 {
+            0%, 45%, 100% { opacity: 0; }
+            50%, 95% { opacity: 1; }
+        }
+        .animate-fade-1 { animation: fade1 10s infinite; }
+        .animate-fade-2 { animation: fade2 10s infinite; }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-white/85 border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo / Name -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="font-bold text-xl tracking-tight text-gray-900 hover:text-brand-600 transition">
+                        W. Wattearachchi
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-900 px-1 py-2 text-sm font-medium transition">About</a>
+                    <a href="#experience" class="nav-link text-gray-600 hover:text-gray-900 px-1 py-2 text-sm font-medium transition">Experience</a>
+                    <a href="#education" class="nav-link text-gray-600 hover:text-gray-900 px-1 py-2 text-sm font-medium transition">Education</a>
+                    <a href="#publications" class="nav-link text-gray-600 hover:text-gray-900 px-1 py-2 text-sm font-medium transition">Publications</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-gray-900 px-1 py-2 text-sm font-medium transition">Projects</a>
+                    <a href="#awards" class="nav-link text-gray-600 hover:text-gray-900 px-1 py-2 text-sm font-medium transition">Awards</a>
+                    <a href="#leadership" class="nav-link text-gray-600 hover:text-gray-900 px-1 py-2 text-sm font-medium transition">Leadership</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50">Experience</a>
+                <a href="#education" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50">Education</a>
+                <a href="#publications" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50">Publications</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50">Projects</a>
+                <a href="#awards" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50">Awards</a>
+                <a href="#leadership" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50">Leadership</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto min-h-[90vh] flex items-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full">
+            <!-- Text Content -->
+            <div class="order-2 md:order-1">
+                <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm md:text-base mb-2">Hello, I am</h2>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-4 leading-tight">
+                    Wasura Wattearachchi
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8 font-light leading-relaxed">
+                    PhD Candidate in Computer Science <br class="hidden md:block"> 
+                    <span class="text-gray-300">|</span> Software Engineer <span class="text-gray-300">|</span> Researcher
+                </p>
+                
+                <!-- Social Links -->
+                <div class="flex space-x-5 mb-10">
+                    <a href="https://github.com/wasuradananjith" target="_blank" class="text-gray-500 hover:text-gray-900 transition transform hover:scale-110" title="GitHub">
+                        <i class="fab fa-github text-3xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/wasura" target="_blank" class="text-gray-500 hover:text-[#0077b5] transition transform hover:scale-110" title="LinkedIn">
+                        <i class="fab fa-linkedin text-3xl"></i>
+                    </a>
+                    <a href="https://wasuradananjith.medium.com" target="_blank" class="text-gray-500 hover:text-black transition transform hover:scale-110" title="Medium">
+                        <i class="fab fa-medium text-3xl"></i>
+                    </a>
+                    <a href="https://orcid.org/0000-0002-1199-4093" target="_blank" class="text-gray-500 hover:text-green-500 transition transform hover:scale-110" title="ORCID">
+                        <i class="fab fa-orcid text-3xl"></i>
+                    </a>
+                    <a href="mailto:w.wattearachchi@unsw.edu.au" class="text-gray-500 hover:text-brand-500 transition transform hover:scale-110" title="Email">
+                        <i class="fas fa-envelope text-3xl"></i>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="#about" class="inline-flex items-center justify-center px-7 py-3.5 border border-transparent text-base font-medium rounded-lg text-white bg-brand-500 hover:bg-brand-600 transition shadow-lg shadow-brand-500/30">
+                        Discover My Work <i class="fas fa-arrow-down ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Image -->
+            <div class="order-1 md:order-2 relative group flex justify-center">
+                <!-- Glowing backdrop effect -->
+                <div class="absolute inset-0 bg-brand-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition duration-700"></div>
+                <img src="images/Profile%20Picture.jpg" alt="Wasura Wattearachchi" class="relative z-10 w-[280px] h-[350px] md:w-[350px] md:h-[450px] object-cover rounded-2xl shadow-2xl transform transition duration-500 group-hover:-translate-y-2 border-4 border-white">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white border-y border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 inline-block border-b-4 border-brand-500 pb-2">About Me</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Text and Skills -->
+                <div class="lg:col-span-8 space-y-8">
+                    <div class="text-gray-600 text-lg leading-relaxed space-y-4">
+                        <p>
+                            I am a dedicated and adaptable individual with strong academic, technical, organizational, and communication skills. Currently pursuing my PhD in Computer Science at the University of New South Wales (UNSW) Canberra, I am passionate about exploring new knowledge and embracing fresh challenges.
+                        </p>
+                        <p>
+                            With a robust background as a Senior Software Engineer at WSO2 and First Class Honours in my BSc, I blend academic rigor with practical industry expertise. I have cultivated an outgoing disposition, enabling me to engage with peers and establish robust networks through collaborative expertise.
+                        </p>
+                    </div>
+                    
+                    <!-- Research Interests -->
+                    <div class="bg-brand-50 p-6 rounded-xl border border-brand-100 shadow-sm">
+                        <h3 class="text-xl font-semibold text-brand-900 mb-4"><i class="fas fa-microscope text-brand-500 mr-2"></i> Research Interests</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white border border-brand-200 rounded-full text-sm text-gray-800 shadow-sm">HCI</span>
+                            <span class="px-3 py-1 bg-white border border-brand-200 rounded-full text-sm text-gray-800 shadow-sm">Swarm Intelligence</span>
+                            <span class="px-3 py-1 bg-white border border-brand-200 rounded-full text-sm text-gray-800 shadow-sm">AI / Machine Learning</span>
+                            <span class="px-3 py-1 bg-white border border-brand-200 rounded-full text-sm text-gray-800 shadow-sm">Multi-Agent Systems</span>
+                            <span class="px-3 py-1 bg-white border border-brand-200 rounded-full text-sm text-gray-800 shadow-sm">Affective Computing</span>
+                            <span class="px-3 py-1 bg-white border border-brand-200 rounded-full text-sm text-gray-800 shadow-sm">Serious Games</span>
+                        </div>
+                    </div>
+
+                    <!-- Technical Skills -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-6">Technical Arsenal</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                <h4 class="font-semibold text-gray-900 mb-1">Languages</h4>
+                                <p class="text-sm text-gray-600">Java, Lua, Python, Go</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                <h4 class="font-semibold text-gray-900 mb-1">Databases</h4>
+                                <p class="text-sm text-gray-600">MySQL, PostgreSQL, Firebase, MongoDB</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                <h4 class="font-semibold text-gray-900 mb-1">Frameworks</h4>
+                                <p class="text-sm text-gray-600">Maven, OSGi, Spring, React</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                <h4 class="font-semibold text-gray-900 mb-1">Core Tech</h4>
+                                <p class="text-sm text-gray-600">CI/CD, REST, GraphQL, Git, Jenkins</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Casual Image -->
+                <div class="lg:col-span-4 relative group rounded-2xl overflow-hidden shadow-lg h-full min-h-[350px]">
+                    <img src="images/Casual%20Picture.jpg" alt="Wasura in Parliament" class="absolute inset-0 w-full h-full object-cover transform transition duration-700 group-hover:scale-105" />
+                    <!-- Dark overlay fade on hover -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition duration-300"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-10 inline-block border-b-4 border-brand-500 pb-2">Experience</h2>
+            
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6 mt-4"><i class="fas fa-chalkboard-teacher text-brand-500 mr-2"></i> Teaching Experience</h3>
+            <div class="space-y-6 mb-12">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-brand-200 transition">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Casual Academic (Lab Demonstrator, Marker, Student Experience Tutor)</h3>
+                            <h4 class="text-brand-600 font-medium">UNSW Canberra, Australia</h4>
+                        </div>
+                        <div class="text-gray-500 mt-2 md:mt-0 font-medium min-w-max">
+                            <i class="far fa-calendar-alt mr-2"></i>2024 – Present
+                        </div>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2 ml-2">
+                        <li><strong>ZEIT1102 Introduction to Programming (Jul 2024 – Present):</strong> Focused on object-oriented programming with Python, data structures, searching/sorting, recursion. Facilitated labs, drop-in sessions, and provided detailed feedback via Moodle.</li>
+                        <li><strong>ZEIT2102 Computer Technology (Jul 2025 – Dec 2025):</strong> Focused on digital and neuromorphic computing, logic operations, hardware architectures, OS, and neural network-based applications.</li>
+                        <li><strong>ZEIT1110 Computer Games (Jul 2024 – Dec 2024):</strong> Unity 3D, HCI, AI, simulation, and graphics. Delivered lab demonstrations, marked assessments, and managed the Moodle student scoreboard.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6"><i class="fas fa-briefcase text-brand-500 mr-2"></i> Industry Experience</h3>
+            <div class="space-y-6">
+                <!-- Job 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-brand-200 transition">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Senior Software Engineer</h3>
+                            <h4 class="text-brand-600 font-medium">WSO2 Lanka (PVT) Ltd, Sri Lanka</h4>
+                        </div>
+                        <div class="text-gray-500 mt-2 md:mt-0 font-medium min-w-max">
+                            <i class="far fa-calendar-alt mr-2"></i>Nov 2021 – Feb 2023
+                        </div>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2 ml-2">
+                        <li><strong>Leadership:</strong> Led and mentored interns/juniors in R&D and maintenance of WSO2 API Manager. Served as Release Manager and Code Owner of WSO2 API Controller (CLI tool written in Go). Conducted webinars, code reviews, and prepared WSO2 Certification exams.</li>
+                        <li><strong>Feature Development:</strong> Backend development with Java and Go. Added GraphQL Subscription support, maintained Web Socket APIs, implemented JDK 17 support, and analysed/fixed security vulnerabilities in dependencies.</li>
+                        <li><strong>Achievement:</strong> Selected as a top finalist of Ballerina: WSO2 Global Hackathon 2022.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-brand-200 transition">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Software Engineer</h3>
+                            <h4 class="text-brand-600 font-medium">WSO2 Lanka (PVT) Ltd, Sri Lanka</h4>
+                        </div>
+                        <div class="text-gray-500 mt-2 md:mt-0 font-medium min-w-max">
+                            <i class="far fa-calendar-alt mr-2"></i>Mar 2020 – Oct 2021
+                        </div>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2 ml-2">
+                        <li>Developed REST APIs (Java, Swagger) to support External Identity Providers for Choreo (iPass from WSO2).</li>
+                        <li>Fully restructured WSO2 API Controller 4.1.0 and implemented CI/CD support for API Products using Go and Java.</li>
+                        <li>Handled bug fixing, customer support, testing, and training sessions.</li>
+                        <li><strong>Achievement:</strong> Rockstar Award (8-time winner for technical writing) & Winner of Internal Hackathon 2021.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-brand-200 transition">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Software Engineer Intern</h3>
+                            <h4 class="text-brand-600 font-medium">WSO2 Lanka (PVT) Ltd, Sri Lanka</h4>
+                        </div>
+                        <div class="text-gray-500 mt-2 md:mt-0 font-medium min-w-max">
+                            <i class="far fa-calendar-alt mr-2"></i>Aug 2018 – Feb 2019
+                        </div>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2 ml-2">
+                        <li>Developed the Comments Feature (Backend and Frontend) for WSO2 API Manager 3.0.0 utilizing Java and React.</li>
+                        <li>Documented GraphQL Support for WSO2 API Manager 2.6.0.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-brand-200 transition">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Trainee, Seeds for the Future</h3>
+                            <h4 class="text-brand-600 font-medium">Huawei Technologies, China</h4>
+                        </div>
+                        <div class="text-gray-500 mt-2 md:mt-0 font-medium min-w-max">
+                            <i class="far fa-calendar-alt mr-2"></i>Nov 2018
+                        </div>
+                    </div>
+                    <p class="text-gray-600 ml-2">Successfully completed Huawei's global CSR flagship program – "Seeds for the Future" in China.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-10 inline-block border-b-4 border-brand-500 pb-2">Education & Qualifications</h2>
+            
+            <div class="relative border-l-2 border-brand-200 ml-4 pl-8 space-y-12">
+                <!-- Edu 1 -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] bg-brand-500 h-5 w-5 rounded-full border-4 border-white"></div>
+                    <h3 class="text-2xl font-bold text-gray-900">PhD Candidate in Computer Science</h3>
+                    <h4 class="text-lg text-brand-600 font-medium mt-1">University of New South Wales (UNSW) Canberra, Australia</h4>
+                    <p class="text-gray-500 mb-3"><i class="far fa-calendar-alt mr-2"></i>Feb 2023 – Present</p>
+                    <p class="text-gray-600">School of Systems and Computing (SysCom). <br>Awarded the University International Postgraduate Award (UIPA).</p>
+                </div>
+
+                <!-- Edu 2 -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] bg-brand-300 h-5 w-5 rounded-full border-4 border-white"></div>
+                    <h3 class="text-2xl font-bold text-gray-900">Bachelor of Science (Hons) in Computer Science</h3>
+                    <h4 class="text-lg text-brand-600 font-medium mt-1">University of Colombo School of Computing (UCSC), Sri Lanka</h4>
+                    <p class="text-gray-500 mb-3"><i class="far fa-calendar-alt mr-2"></i>2016 – 2020</p>
+                    <p class="text-gray-600"><strong>First Class Honours</strong> with GPA: 3.95 (Batch Top).</p>
+                    <div class="mt-3 text-sm text-gray-600 bg-brand-50 border border-brand-100 p-3 rounded-lg inline-block">
+                        <strong>Awards:</strong> Prof. V.K. Samaranayake Award for Most Outstanding Graduate, Prof. Mohan Munasinghe Award for Best Performance, Prof. Thilak Hettiarachchy Award for Academic Excellence.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Short Courses & Certs -->
+            <h3 class="text-2xl font-semibold text-gray-800 mt-16 mb-6"><i class="fas fa-certificate text-brand-500 mr-2"></i> Certifications & Short Courses</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                    <h4 class="font-bold text-gray-900">Beginning to Teach</h4>
+                    <p class="text-sm text-gray-500 mb-2">UNSW Canberra (2024)</p>
+                    <p class="text-sm text-gray-600">13-week professional development program. <br><span class="text-brand-600 font-medium">✓ AEHGS Approved</span></p>
+                </div>
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                    <h4 class="font-bold text-gray-900">Leadership Foundations Course</h4>
+                    <p class="text-sm text-gray-500 mb-2">UNSW Employability Team (2024)</p>
+                    <p class="text-sm text-gray-600"><span class="text-brand-600 font-medium">✓ AEHGS Approved</span></p>
+                </div>
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                    <h4 class="font-bold text-gray-900">ESOFT Metro Campus</h4>
+                    <p class="text-sm text-gray-500 mb-2">2017 – 2018</p>
+                    <p class="text-sm text-gray-600">Completed Android Application Development with Java (Pearson Assured) and Advanced Web Development with PHP.</p>
+                </div>
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                    <h4 class="font-bold text-gray-900">Other Certifications</h4>
+                    <ul class="text-sm text-gray-600 list-disc list-inside mt-2">
+                        <li>British Computer Society (BCS) - Certificate Level (2015)</li>
+                        <li>IELTS Academic: 8.0 (January 2022)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section (with sliding images) -->
+    <section id="publications" class="py-20 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-10 inline-block border-b-4 border-brand-500 pb-2">Selected Publications</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <!-- Publications List -->
+                <div class="lg:col-span-7 space-y-5">
+                    <!-- Pub 1 -->
+                    <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-brand-500 hover:shadow-md transition">
+                        <p class="text-gray-800 leading-relaxed">
+                            <span class="font-semibold text-gray-900">W. D. Wattearachchi.</span>, E. Lakshika, K. Kasmarik, & M. Barlow, 
+                            "Designing Effective Human-Swarm Interaction Interfaces: Insights from a User Study on Task Performance", 
+                            <em class="text-gray-600">2025 IEEE International Conference on Systems, Man, and Cybernetics (SMC)</em>, Vienna, Austria.
+                        </p>
+                        <a href="https://doi.org/10.1109/SMC58881.2025.11343025" target="_blank" class="text-brand-600 text-sm hover:underline mt-2 inline-block"><i class="fas fa-external-link-alt mr-1"></i> DOI: 10.1109/SMC58881.2025.11343025</a>
+                    </div>
+
+                    <!-- Pub 2 -->
+                    <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-brand-500 hover:shadow-md transition">
+                        <p class="text-gray-800 leading-relaxed">
+                            <span class="font-semibold text-gray-900">W. D. Wattearachchi.</span>, E. Lakshika, K. Kasmarik, & M. Barlow, 
+                            "Understanding Human Situation Awareness in One-to-Many Human-Robot Interaction Scenarios", 
+                            <em class="text-gray-600">Australasian Joint Conference on Artificial Intelligence (AJCAI) 2025</em>, Canberra, Australia.
+                        </p>
+                        <a href="https://doi.org/10.1007/978-981-95-4972-6_37" target="_blank" class="text-brand-600 text-sm hover:underline mt-2 inline-block"><i class="fas fa-external-link-alt mr-1"></i> DOI: 10.1007/978-981-95-4972-6_37</a>
+                    </div>
+
+                    <!-- Pub 3 -->
+                    <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-gray-300 hover:shadow-md transition">
+                        <p class="text-gray-800 leading-relaxed">
+                            <span class="font-semibold text-gray-900">W. D. Wattearachchi</span>, K. P. Hewagamage, and E. Hettiarachchi, 
+                            "Emotional Keyboard: To Provide Adaptive Functionalities Based on the Current User Emotion and the Context", 
+                            <em class="text-gray-600">Interaction Design and Architecture(s)</em>, no. 54, pp. 147-174, Nov. 2022.
+                        </p>
+                        <a href="https://doi.org/10.55612/s-5002-054-007" target="_blank" class="text-brand-600 text-sm hover:underline mt-2 inline-block"><i class="fas fa-external-link-alt mr-1"></i> DOI: 10.55612/s-5002-054-007</a>
+                    </div>
+
+                    <!-- Pub 4 -->
+                    <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-gray-300 hover:shadow-md transition">
+                        <p class="text-gray-800 leading-relaxed">
+                            <span class="font-semibold text-gray-900">W. D. Wattearachchi</span>, K. P. Hewagamage and E. Hettiarachchi, 
+                            "A Framework to Decide Adaptive Functionalities by Considering User Emotions and the Context", 
+                            <em class="text-gray-600">2020 20th International Conference on Advances in ICT for Emerging Regions (ICTer)</em>, Colombo, Sri Lanka, 2020.
+                        </p>
+                        <a href="https://doi.org/10.1109/ICTer51097.2020.9325497" target="_blank" class="text-brand-600 text-sm hover:underline mt-2 inline-block"><i class="fas fa-external-link-alt mr-1"></i> DOI: 10.1109/ICTer51097.2020.9325497</a>
+                    </div>
+
+                    <!-- Pub 5 -->
+                    <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-gray-300 hover:shadow-md transition">
+                        <p class="text-gray-800 leading-relaxed">
+                            <span class="font-semibold text-gray-900">W. D. Wattearachchi</span>, E. Hettiarachchi, and K. P. Hewagamage, 
+                            "Analysing the Compatibility of Identifying Emotions by Facial Expressions and Text Analytics when Using Mobile Devices", 
+                            <em class="text-gray-600">Proceedings of the 2020 2nd International Conference on Image, Video and Signal Processing (IVSP)</em>, Mar. 2020.
+                        </p>
+                        <a href="https://doi.org/10.1145/3388818.3389161" target="_blank" class="text-brand-600 text-sm hover:underline mt-2 inline-block"><i class="fas fa-external-link-alt mr-1"></i> DOI: 10.1145/3388818.3389161</a>
+                    </div>
+
+                    <!-- Pub 6 -->
+                    <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-gray-300 hover:shadow-md transition">
+                        <p class="text-gray-800 leading-relaxed">
+                            <span class="font-semibold text-gray-900">W. D. Wattearachchi</span>, E. Hettiarachchi and K. P. Hewagamage, 
+                            "Critical Success Factors of Analysing User Emotions to Improve the Usability of Systems", 
+                            <em class="text-gray-600">2019 Twelfth International Conference on Ubi-Media Computing (Ubi-Media)</em>, 2019.
+                        </p>
+                        <a href="https://www.doi.org/10.1109/Ubi-Media.2019.00026" target="_blank" class="text-brand-600 text-sm hover:underline mt-2 inline-block"><i class="fas fa-external-link-alt mr-1"></i> DOI: 10.1109/UbiMedia.2019.00026</a>
+                    </div>
+                </div>
+
+                <!-- Dynamic Conference Images -->
+                <div class="lg:col-span-5 relative">
+                    <div class="sticky top-24 w-full h-[500px] rounded-2xl overflow-hidden shadow-xl bg-gray-900 border border-gray-200 group">
+                        <img src="images/AJCAI%20Conference%202025.jpg" alt="AJCAI Conference 2025" class="absolute inset-0 w-full h-full object-cover animate-fade-1" />
+                        <img src="images/IEEE%20SMC%20Conference%202025.jpg" alt="IEEE SMC Conference 2025" class="absolute inset-0 w-full h-full object-cover animate-fade-2" />
+                        
+                        <!-- Gradient Overlay and text -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-brand-500 font-bold text-sm tracking-wider uppercase mb-1">Conferences</span>
+                            <h3 class="text-white text-lg font-medium leading-snug">Presenting my research globally at top tier venues including IEEE SMC and AJCAI.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-10 inline-block border-b-4 border-brand-500 pb-2">Projects & Hackathons</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-brand-300 transition flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">WSO2 API Manager</h3>
+                            <i class="fas fa-cloud text-brand-500 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">A platform for building, integrating and exposing digital services as managed APIs in the cloud, on-premises, and hybrid architectures.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Java</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">OSGi</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">React</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-brand-300 transition flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">WSO2 API Controller</h3>
+                            <i class="fas fa-terminal text-gray-700 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">CI/CD tooling for WSO2 API Manager.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Go</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Git</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Jenkins</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-brand-300 transition flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">UCSC Library System</h3>
+                            <i class="fas fa-book-open text-blue-500 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">A web system to manage functions in a library. Developed individually.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">MEAN Stack</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">MongoDB</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Angular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-brand-300 transition flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">TalkToTalk App</h3>
+                            <i class="fab fa-android text-green-500 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Augmentative and Alternative Communication device application helping users communicate effectively.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Android Studio</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Java</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Google Vision API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-brand-300 transition flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">Smart Kumbura</h3>
+                            <i class="fas fa-leaf text-green-600 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">A water management system for farmers (NB IOT Hackathon). Developed the complete Android app.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Firebase</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Arduino</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-brand-300 transition flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">PutMe</h3>
+                            <i class="fas fa-recycle text-green-700 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Waste management system with IoT, mobile app, and web app (Sampath Green Inventor). Developed mobile app and part of web system.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Ionic</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">PHP/MySQL</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Arduino</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-brand-300 transition flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">AWEERA</h3>
+                            <i class="fas fa-cut text-purple-600 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Comprehensive Salon Management System. Built appointment scheduling algorithms, profiles, and database structure.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">PHP</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">MySQL</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">jQuery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-brand-300 transition flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">MyDoctor</h3>
+                            <i class="fas fa-stethoscope text-red-500 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Android app to locate medical centers with instant video chatting with doctors (MedHack 2017). Built Nearby Places module.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Android</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Vidyo APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-brand-300 transition flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">MediQ</h3>
+                            <i class="fas fa-bell text-yellow-500 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Notification system for patients tracking consultation numbers (ESOFT Dev Challenge 2017). Developed complete Android app.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Android</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">Java SE</span>
+                            <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">PHP/MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Scholarships Section -->
+    <section id="awards" class="py-20 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-10 inline-block border-b-4 border-brand-500 pb-2">Honours & Awards</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Highlighted Picture Awards -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-semibold text-gray-800 border-b pb-2"><i class="fas fa-trophy text-brand-500 mr-2"></i> Highlighted Achievements</h3>
+                    
+                    <!-- PGC Award Card -->
+                    <div class="bg-white flex flex-col sm:flex-row gap-5 p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                        <img src="images/Arc%20PGC%20Award%202024.jpg" alt="Arc PGC Award" class="w-full sm:w-32 h-40 sm:h-32 object-cover rounded-lg" />
+                        <div class="flex flex-col justify-center">
+                            <h4 class="font-bold text-lg text-gray-900">Arc PGC Research Candidate Award 2024</h4>
+                            <p class="text-sm text-gray-500 mt-1">UNSW Canberra & Arc UNSW Sydney</p>
+                            <span class="mt-2 inline-block px-3 py-1 bg-brand-50 text-brand-600 text-xs font-semibold rounded-full border border-brand-100">Winner</span>
+                        </div>
+                    </div>
+
+                    <!-- 3MT Award Card -->
+                    <div class="bg-white flex flex-col sm:flex-row gap-5 p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                        <img src="images/3MT%20Finals%202024.jpg" alt="3MT Finals" class="w-full sm:w-32 h-40 sm:h-32 object-cover rounded-lg" />
+                        <div class="flex flex-col justify-center">
+                            <h4 class="font-bold text-lg text-gray-900">People's Choice Award – 3MT Finals</h4>
+                            <p class="text-sm text-gray-500 mt-1">UNSW Canberra (Advanced to Finals at UNSW Sydney)</p>
+                            <span class="mt-2 inline-block px-3 py-1 bg-brand-50 text-brand-600 text-xs font-semibold rounded-full border border-brand-100">Winner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Awards & Scholarships -->
+                <div class="space-y-8 mt-2 lg:mt-0">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-5 border-b pb-2"><i class="fas fa-medal text-brand-500 mr-2"></i> Academic Awards</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-brand-500 mt-1 mr-3"></i>
+                                <div><h4 class="font-bold text-gray-800">CSSL ICT Student Award 2020</h4><p class="text-sm text-gray-600">Undergraduate Category at National Awards</p></div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-brand-500 mt-1 mr-3"></i>
+                                <div><h4 class="font-bold text-gray-800">Prof. V.K. Samaranayake Award 2019</h4><p class="text-sm text-gray-600">Most Outstanding Graduate of UCSC</p></div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-brand-500 mt-1 mr-3"></i>
+                                <div><h4 class="font-bold text-gray-800">Prof. Mohan Munasinghe Award 2019</h4><p class="text-sm text-gray-600">Best Performance (Highest GPA in CS)</p></div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-brand-500 mt-1 mr-3"></i>
+                                <div><h4 class="font-bold text-gray-800">Prof. Thilak Hettiarachchy Award 2019</h4><p class="text-sm text-gray-600">Academic Excellence (Open Award)</p></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-5 border-b pb-2"><i class="fas fa-star text-brand-500 mr-2"></i> Scholarships & Placements</h3>
+                        <div class="text-sm text-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <span>• <strong>UIPA</strong> for PhD at UNSW Canberra</span>
+                            <span>• Cornell, Maryland, Max Planck Pre-doctoral Research School, Germany (Aug 2020)</span>
+                            <span>• Huawei Seeds for the Future, China (Nov 2018)</span>
+                            <span>• Nominated for Rhodes Scholarship (UoC, 2021)</span>
+                            <span>• Winner (1st) – MedHack '17</span>
+                            <span>• 2nd Runner-Up – Quizzer '17</span>
+                            <span>• Most Creative – ESOFT '17</span>
+                            <span>• 19th – Sampath Green Inventor</span>
+                            <span>• Top 8 – Best Software UCSC</span>
+                            <span>• Top 10 – Codefest '17 & Gamerush '19</span>
+                            <span>• Top 15/20/25 – HackX, HackStat, NB-IOT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section with Faded Background -->
+    <section id="leadership" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-10 inline-block border-b-4 border-brand-500 pb-2">Leadership & Extracurriculars</h2>
+            
+            <div class="relative rounded-2xl overflow-hidden shadow-xl bg-gray-900 border border-gray-800">
+                <!-- Background Image (YoWIE) with strong dark overlay -->
+                <img src="images/YoWIE%202024.jpg" alt="Teaching at YoWIE" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay" />
+                <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/90 to-transparent"></div>
+                
+                <div class="relative z-10 p-8 md:p-12">
+                    <h3 class="text-2xl font-semibold text-white mb-6 border-b border-gray-700 pb-2">Empowering the Community</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-5 text-gray-300">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-brand-500 mt-1 mr-3"></i> <span>Vice-President (Postgraduate) of Arc Canberra (2024) — AEHGS Approved</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-brand-500 mt-1 mr-3"></i> <span>Student Rep. of Research Learning Group (SysCom, UNSW) (2024 – Present)</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-brand-500 mt-1 mr-3"></i> <span>Coordinator of Arc Dance Club at UNSW Canberra (2023 – Present)</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-brand-500 mt-1 mr-3"></i> <span class="text-white font-medium">Volunteer at Young Women in Engineering (YoWIE) 2025 (Robotics activities)</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-brand-500 mt-1 mr-3"></i> <span>Volunteer at IEEE TENSYMP 2023 Conference</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-brand-500 mt-1 mr-3"></i> <span>Volunteer at ADFA Open Day 2023 & 2024</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-brand-500 mt-1 mr-3"></i> <span>Main Organizer – UCSC Career Fair 2019</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-brand-500 mt-1 mr-3"></i> <span>Team Leader – TryCatch++ (2016 – 2019)</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-brand-500 mt-1 mr-3"></i> <span>Member of Toastmasters Club at WSO2 (2018)</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-brand-500 mt-1 mr-3"></i> <span>Led the Boys' Dance Group at UCSC (2017 – 2019)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-4">Wasura Wattearachchi</h2>
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://github.com/wasuradananjith" target="_blank" class="text-gray-400 hover:text-brand-500 transition"><i class="fab fa-github text-xl"></i></a>
+                <a href="https://linkedin.com/in/wasura" target="_blank" class="text-gray-400 hover:text-brand-500 transition"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="mailto:w.wattearachchi@unsw.edu.au" class="text-gray-400 hover:text-brand-500 transition"><i class="fas fa-envelope text-xl"></i></a>
+            </div>
+            <p class="text-gray-500 text-sm">
+                &copy; <span id="year"></span> Wasura Wattearachchi. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts for Interaction -->
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Scrollspy mechanism to highlight active nav links
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Navbar drop shadow on scroll
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
