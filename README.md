@@ -35,32 +35,6 @@ I am a dedicated software engineer and researcher with a First Class Honours BSc
 
 * 💬 **Ask me about:** Java, Go, API Management, Academic Research, or organizing student community events!
 
-## 🎤 Featured Talks, Videos & Articles
-
-I love sharing knowledge and communicating my research visually to broad audiences. Here are some of my recent presentations and community contributions:
-
-### 🔬 Academic & Research Presentations
-
-* 🎥 [**Visualise Your Thesis 2025**](https://youtu.be/J4fYXZJhmwg): Representing UNSW Canberra internationally by visually communicating my research.
-
-* 🎥 [**3MT Presentation 2024**](https://youtu.be/IEpXHtbHoJg): My pitch that won the People's Choice Award at the Three Minute Thesis Finals.
-
-* 🎥 [**IEEE SMC Presentation**](https://youtu.be/Xt8HmC0nfp8): Presenting my paper on "Designing Effective Human-Swarm Interaction Interfaces".
-
-### 🤝 Community & Teaching
-
-* 🎥 [**Activity Support Robotics in YoWIE 2025**](https://youtu.be/OL1qyRZbCPg): Inspiring young women in engineering through hands-on robotics workshops.
-
-* ✍️ [**Blog: Inspiring the Next Generation**](https://medium.com/@wasuradananjith/yowie-2025): Read my Medium article about my experience volunteering at YoWIE 2025.
-
-### 💻 Tech Industry & Open Source
-
-*Produced educational screencasts and hosted live community calls for WSO2's global developer audience (2020–2023).*
-
-* 🎥 [**WSO2 Screencast Example**](https://youtu.be/yFI4VNqPNBg)
-
-* 🎥 [**WSO2 Community Call Example**](https://youtu.be/YjrKrmhMRyU)
-
 ## 🛠️ Technical Arsenal
 
 **Languages:**
@@ -89,7 +63,6 @@ I love sharing knowledge and communicating my research visually to broad audienc
 ## 📈 GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=wasuradananjith&show_icons=true&theme=radical" alt="Wasura's GitHub Stats" width="48%" />
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=wasuradananjith&theme=radical" alt="Wasura's GitHub Streak" width="48%" />
 </p>
 
